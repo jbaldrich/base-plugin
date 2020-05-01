@@ -1,0 +1,35 @@
+{
+	"name": "jacobaldrich/base-plugin",
+	"description": "Base for a custom WP plugin.",
+	"type": "wordpress-plugin",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Jaco Baldrich",
+			"email": "hello@jacobaldrich.com"
+		}
+	],
+	"require": {},
+	"require-dev": {
+		"phpunit/phpunit": "^8",
+		"inpsyde/php-coding-standards": "^0.13.4",
+		"phpstan/phpstan": "^0.12.19",
+		"szepeviktor/phpstan-wordpress": "^0.6.0"
+	},
+	"autoload": {
+		"psr-4": {
+			"JacoBaldrich\\BasePlugin\\": "src/"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"Tests\\JacoBaldrich\\BasePlugin\\": "tests/"
+		}
+	},
+	"scripts": {
+		"test": "vendor/bin/phpunit --bootstrap vendor/autoload.php --testdox tests",
+		"style": "phpcs --colors src tests templates",
+		"fix-style": "phpcbf src tests templates",
+		"phpstan": "vendor/bin/phpstan analyse -c phpstan.neon --memory-limit=1G"
+	}
+}
